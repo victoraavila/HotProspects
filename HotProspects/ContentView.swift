@@ -7,9 +7,6 @@
 
 import SwiftUI
 
-// Most of the time it takes little work to get SwiftData set up
-// We want all 3 instances of ProspectsView to share the same data, but have different Views on it, i.e., they will all access the same Model Context using different queries.
-
 struct ContentView: View {
     var body: some View {
         TabView {

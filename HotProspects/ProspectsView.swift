@@ -8,6 +8,9 @@
 import SwiftData
 import SwiftUI
 
+// For the Everyone Tab: we want to get all entries and sort them by name.
+// However, for the other Tabs, we're gonna need to add an initializer so we can override the default query when a filter is set.
+
 struct ProspectsView: View {
     enum FilterType {
         case none, contacted, uncontacted
@@ -15,7 +18,6 @@ struct ProspectsView: View {
     
     let filter: FilterType
     
-    // The title will depend on which of the 3 ProspectsView this one is
     var title: String {
         switch filter {
         case .none:
@@ -27,33 +29,51 @@ struct ProspectsView: View {
         }
     }
     
-    // Since we want all ProspectsView to share the same model data, we need to add 2 properties:
-    // 1. One to access the Model Context;
-    // 2. Another to form a query for Prospect objects.
     @Environment(\.modelContext) var modelContext
     @Query(sort: \Prospect.name) var prospects: [Prospect]
     
     var body: some View {
         NavigationStack {
-            Text("People: \(prospects.count)")
-                .navigationTitle(title)
-            
-                // Adding a simple Navigation Bar Item that just adds test data and shows it on screen
-                // Since they share the same instance of Prospect, the entry will be added to all 3 ProspectsViews.
-                .toolbar {
-                    Button("Scan", systemImage: "qrcode.viewfinder") {
-                        let prospect = Prospect(name: "Paul Hudson", emailAddress: "paul@hackingwithswift.com", isContacted: false)
-                        modelContext.insert(prospect)
-                    }
+            List(prospects) { prospect in
+                VStack(alignment: .leading) {
+                    Text(prospect.name)
+                        .font(.headline)
+                    
+                    Text(prospect.emailAddress)
+                        .foregroundStyle(.secondary)
                 }
+            }
+            .navigationTitle(title)
+            .toolbar {
+                Button("Scan", systemImage: "qrcode.viewfinder") {
+                    let prospect = Prospect(name: "Paul Hudson", emailAddress: "paul@hackingwithswift.com", isContacted: false)
+                    modelContext.insert(prospect)
+                }
+            }
         }
+    }
+    
+    init(filter: FilterType) {
+        self.filter = filter
+        
+        if filter != .none {
+            // Then, we want to show either only contacted or non-contacted folks
+            
+            // If filter == .contacted, it will set showContactedOnly to true
+            // Otherwise, it will set showContactedOnly to false
+            let showContactedOnly = filter == .contacted
+            
+            _prospects = Query(filter: #Predicate {
+                // If the current row have isContacted set to true and showContactedOnly is also set to true, keep the row
+                $0.isContacted == showContactedOnly
+            }, sort: [SortDescriptor(\Prospect.name)])
+        }
+        
+        // With this initializer, we can now create a List to just loop over all the results in the resulting Array, and show for each of them both a title and their e-mail address using a VStack.
     }
 }
 
 #Preview {
-    // Every ProspectsView() initializer has to be called with a filter in place
     ProspectsView(filter: .none)
-    
-        // Adding a Model Container in order to use XCode's Canvas Preview
         .modelContainer(for: Prospect.self)
 }
