@@ -19,10 +19,12 @@ struct MeView: View {
         NavigationStack {
             Form {
                 TextField("Name", text: $name)
+                    .textInputAutocapitalization(.never)
                     .textContentType(.name)
                     .font(.title)
                 
                 TextField("Email address", text: $emailAddress)
+                    .textInputAutocapitalization(.never)
                     .textContentType(.emailAddress)
                     .font(.title)
                 
