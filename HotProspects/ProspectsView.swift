@@ -110,6 +110,8 @@ struct ProspectsView: View {
                                 .tag([SortDescriptor(\Prospect.name)])
                             Text("Sort by email")
                                 .tag([SortDescriptor(\Prospect.emailAddress)])
+                            Text("Sort by most recent")
+                                .tag([SortDescriptor(\Prospect.createdAt, order: .reverse)])
                         }
                     }
                 }
@@ -156,7 +158,7 @@ struct ProspectsView: View {
             
             guard details.count == 2 else { return }
             
-            let person = Prospect(name: details[0], emailAddress: details[1], isContacted: false)
+            let person = Prospect(name: details[0], emailAddress: details[1], isContacted: false, createdAt: Date.now)
             modelContext.insert(person)
             
         case .failure(let error):
@@ -217,6 +219,9 @@ struct ProspectsView: View {
 }
 
 #Preview {
-    ProspectsView(filter: .none)
-        .modelContainer(for: Prospect.self)
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    let container = try! ModelContainer(for: Prospect.self, configurations: config)
+    
+    return ProspectsView(filter: .none)
+        .modelContainer(container)
 }

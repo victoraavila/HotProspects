@@ -28,6 +28,6 @@ struct EditProspectView: View {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
     let container = try! ModelContainer(for: Prospect.self, configurations: config)
     
-    let prospect = Prospect(name: "Michael Jackson", emailAddress: "michael@gmail.com", isContacted: false)
+    let prospect = Prospect(name: "Michael Jackson", emailAddress: "michael@gmail.com", isContacted: false, createdAt: Date.now)
     return EditProspectView(prospect: prospect).modelContainer(container)
 }
