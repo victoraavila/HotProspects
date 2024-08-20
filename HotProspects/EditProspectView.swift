@@ -14,7 +14,9 @@ struct EditProspectView: View {
     var body: some View {
         Form {
             TextField("Name", text: $prospect.name)
+                .textInputAutocapitalization(.never)
             TextField("Email address", text: $prospect.emailAddress)
+                .textInputAutocapitalization(.never)
         }
         .navigationTitle("Change Prospect Details")
         .navigationBarTitleDisplayMode(.inline)

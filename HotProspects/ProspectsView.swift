@@ -41,9 +41,11 @@ struct ProspectsView: View {
     
     @State private var selectedProspects = Set<Prospect>()
     
+    @State private var sortOrder = [SortDescriptor(\Prospect.name)]
+    
     var body: some View {
         NavigationStack {
-            List(prospects, selection: $selectedProspects) { prospect in
+            List(prospects.sorted(using: sortOrder), selection: $selectedProspects) { prospect in
                 NavigationLink(destination: EditProspectView(prospect: prospect)) {
                     HStack {
                         VStack(alignment: .leading) {
@@ -101,6 +103,17 @@ struct ProspectsView: View {
                     }
                 }
                 
+                ToolbarItem(placement: .topBarTrailing) {
+                    Menu("Sort", systemImage: "arrow.up.arrow.down") {
+                        Picker("Sort", selection: $sortOrder) {
+                            Text("Sort by name")
+                                .tag([SortDescriptor(\Prospect.name)])
+                            Text("Sort by email")
+                                .tag([SortDescriptor(\Prospect.emailAddress)])
+                        }
+                    }
+                }
+                
                 ToolbarItem(placement: .topBarLeading) {
                     EditButton()
                 }
@@ -127,7 +140,9 @@ struct ProspectsView: View {
             
             _prospects = Query(filter: #Predicate {
                 $0.isContacted == showContactedOnly
-            }, sort: [SortDescriptor(\Prospect.name)])
+            }, sort: sortOrder)
+        } else {
+            _prospects = Query(sort: sortOrder)
         }
     }
     
