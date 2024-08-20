@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		96A10B322C71A60900A27E03 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 96A10B312C71A60900A27E03 /* CodeScanner */; };
+		96413B652C751D8700BD2CFE /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 96413B642C751D8700BD2CFE /* CodeScanner */; };
+		96960E582C75214500856A48 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B4EDE62C6ED2E400A3112F /* ContentView.swift */; };
 		96B4EDE52C6ED2E400A3112F /* HotProspectsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B4EDE42C6ED2E400A3112F /* HotProspectsApp.swift */; };
-		96B4EDE72C6ED2E400A3112F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B4EDE62C6ED2E400A3112F /* ContentView.swift */; };
 		96B4EDE92C6ED2E600A3112F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96B4EDE82C6ED2E600A3112F /* Assets.xcassets */; };
 		96B4EDEC2C6ED2E600A3112F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96B4EDEB2C6ED2E600A3112F /* Preview Assets.xcassets */; };
 		96B4EDF32C6ED56B00A3112F /* ProspectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B4EDF22C6ED56B00A3112F /* ProspectsView.swift */; };
@@ -33,7 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96A10B322C71A60900A27E03 /* CodeScanner in Frameworks */,
+				96413B652C751D8700BD2CFE /* CodeScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,7 +95,7 @@
 			);
 			name = HotProspects;
 			packageProductDependencies = (
-				96A10B312C71A60900A27E03 /* CodeScanner */,
+				96413B642C751D8700BD2CFE /* CodeScanner */,
 			);
 			productName = HotProspects;
 			productReference = 96B4EDE12C6ED2E400A3112F /* HotProspects.app */;
@@ -155,9 +155,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				96B4EDF52C6ED57800A3112F /* MeView.swift in Sources */,
+				96960E582C75214500856A48 /* ContentView.swift in Sources */,
 				96B4EDF72C6EF0E400A3112F /* Prospect.swift in Sources */,
 				96B4EDF32C6ED56B00A3112F /* ProspectsView.swift in Sources */,
-				96B4EDE72C6ED2E400A3112F /* ContentView.swift in Sources */,
 				96B4EDE52C6ED2E400A3112F /* HotProspectsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,7 +381,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		96A10B312C71A60900A27E03 /* CodeScanner */ = {
+		96413B642C751D8700BD2CFE /* CodeScanner */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 96A10B302C71A60900A27E03 /* XCRemoteSwiftPackageReference "CodeScanner" */;
 			productName = CodeScanner;
