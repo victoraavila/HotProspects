@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		96413B652C751D8700BD2CFE /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 96413B642C751D8700BD2CFE /* CodeScanner */; };
 		96960E582C75214500856A48 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B4EDE62C6ED2E400A3112F /* ContentView.swift */; };
+		96960E5A2C7531D900856A48 /* EditProspectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96960E592C7531D900856A48 /* EditProspectView.swift */; };
 		96B4EDE52C6ED2E400A3112F /* HotProspectsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B4EDE42C6ED2E400A3112F /* HotProspectsApp.swift */; };
 		96B4EDE92C6ED2E600A3112F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96B4EDE82C6ED2E600A3112F /* Assets.xcassets */; };
 		96B4EDEC2C6ED2E600A3112F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96B4EDEB2C6ED2E600A3112F /* Preview Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		96960E592C7531D900856A48 /* EditProspectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProspectView.swift; sourceTree = "<group>"; };
 		96B4EDE12C6ED2E400A3112F /* HotProspects.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotProspects.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96B4EDE42C6ED2E400A3112F /* HotProspectsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotProspectsApp.swift; sourceTree = "<group>"; };
 		96B4EDE62C6ED2E400A3112F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				96B4EDE62C6ED2E400A3112F /* ContentView.swift */,
 				96B4EDF62C6EF0E400A3112F /* Prospect.swift */,
 				96B4EDF22C6ED56B00A3112F /* ProspectsView.swift */,
+				96960E592C7531D900856A48 /* EditProspectView.swift */,
 				96B4EDF42C6ED57800A3112F /* MeView.swift */,
 				96B4EDE82C6ED2E600A3112F /* Assets.xcassets */,
 				96B4EDEA2C6ED2E600A3112F /* Preview Content */,
@@ -158,6 +161,7 @@
 				96960E582C75214500856A48 /* ContentView.swift in Sources */,
 				96B4EDF72C6EF0E400A3112F /* Prospect.swift in Sources */,
 				96B4EDF32C6ED56B00A3112F /* ProspectsView.swift in Sources */,
+				96960E5A2C7531D900856A48 /* EditProspectView.swift in Sources */,
 				96B4EDE52C6ED2E400A3112F /* HotProspectsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -44,21 +44,23 @@ struct ProspectsView: View {
     var body: some View {
         NavigationStack {
             List(prospects, selection: $selectedProspects) { prospect in
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text(prospect.name)
-                            .font(.headline)
+                NavigationLink(destination: EditProspectView(prospect: prospect)) {
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(prospect.name)
+                                .font(.headline)
+                            
+                            Text(prospect.emailAddress)
+                                .foregroundStyle(.secondary)
+                        }
                         
-                        Text(prospect.emailAddress)
-                            .foregroundStyle(.secondary)
-                    }
-                    
-                    Spacer()
-                    
-                    if filter == .none {
-                        Image(systemName: prospect.isContacted ? "person.crop.circle.fill.badge.checkmark" : "person.crop.circle.badge.xmark")
-                            .font(.title)
-                            .foregroundStyle(prospect.isContacted ? .green : .red)
+                        Spacer()
+                        
+                        if filter == .none {
+                            Image(systemName: prospect.isContacted ? "person.crop.circle.fill.badge.checkmark" : "person.crop.circle.badge.xmark")
+                                .font(.title)
+                                .foregroundStyle(prospect.isContacted ? .green : .red)
+                        }
                     }
                 }
                 .swipeActions {
@@ -88,6 +90,10 @@ struct ProspectsView: View {
                 .tag(prospect)
             }
             .navigationTitle(title)
+            .onAppear {
+                // Reset selected prospects when the view appears
+                selectedProspects.removeAll()
+            }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Scan", systemImage: "qrcode.viewfinder") {
